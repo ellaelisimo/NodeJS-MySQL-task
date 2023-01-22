@@ -5,9 +5,11 @@ import { PORT } from "./src/config.js";
 import groupsAuth from "./src/groupsAuth.js";
 import accountsAuth from "./src/accountsAuth.js";
 import billsAuth from "./src/billsAuth.js";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 

@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Roboto:wght@100&display=swap');
+
+* {
+    text-align: center;
+}
+
+body{
+    font-family: 'Inter', sans-serif;;
+}
+
+img{
+    height: 110px;
+    width: 110px;
+}
+
+h2{
+    color: rgb(136, 131, 131);
+    font-size: 13px;
+}
+
+h1{
+    color: rgb(92, 87, 87);
+    font-size: 20px;
+}
+
+h3{
+    color:rgb(65, 58, 58) ;
+}
+
+#link-another-html {
+    text-decoration: none;
+    color: black;
+}
+
+#register-form, #login-form, #group-form, #bills-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 45px;
+    margin-left: 545px;
+    width: 150px;
+    
+}
+form>input{
+    margin: 0 auto;
+}
+
+
+#email, #password, #name, #amount, #description, #group-id{
+    width: 247px;
+    text-align: center;
+}
+
+#login-button{
+    width: 49px;
+    flex-grow: 2;
+    color: rgb(65, 58, 58);
+    margin-top: 10px;
+    text-align: center;
+}
+
+#register-button{
+    width: 84px;
+    flex-grow: 2;
+    color: rgb(65, 58, 58);
+    margin-top: 10px;
+    text-align: center;
+}
+
+#show-groups{
+color: rgb(65, 58, 58);
+}
+
+#add-button{
+    width: 49px;
+    flex-grow: 2;
+    color: rgb(65, 58, 58);
+    margin-top: 10px;
+    text-align: center;
+}
+
+h3, label, #login-button{
+text-align: left;
+}
+
+p {
+    width: 250px;
+}
+
+#new-h3{
+    text-align: center;
+}
