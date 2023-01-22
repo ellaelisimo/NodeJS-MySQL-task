@@ -90,3 +90,8 @@ p {
 #new-h3{
     text-align: center;
 }
+
+#group-div{
+    display: flex;
+    justify-content: space-between;
+}

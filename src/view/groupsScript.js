@@ -1,12 +1,9 @@
-const loginForm = document.querySelector("#login-form");
-
 const getGroups = async () => {
   try {
     const response = await fetch("http://localhost:5000/groups");
 
-    const groups = await response.json();
+    const [groups] = await response.json();
 
-    console.log(groups);
     showGroups(groups);
   } catch (error) {
     console.error(error);
@@ -28,11 +25,29 @@ const showGroups = (groups) => {
   });
 };
 
-loginForm.addEventListener("click", async (event) => {
-  event.preventDefault();
+document
+  .querySelector("#group-form")
+  .addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  await getGroups();
+    const nameGroupInput = document.querySelector("#group-id").value.trim();
 
-  document.querySelector("#show-groups").style.display = "none";
-  //   document.querySelector("#output").style.backgroundColor = "#222";
-});
+    try {
+      const res = await fetch("http://localhost:5000/groups", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: nameGroupInput,
+        }),
+      });
+      console.log(res);
+      if (res.ok) {
+        window.location.href("./bills.html");
+      }
+      if (!res.ok) {
+        return console.error("Incorrect group name.");
+      }
+    } catch (error) {
+      return console.error(error);
+    }
+  });
