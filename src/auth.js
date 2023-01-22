@@ -18,7 +18,7 @@ router.post("/register", async (req, res) => {
   let userData = req.body;
 
   try {
-    userData = userSchema.validate(userData);
+    userData = await userSchema.validateAsync(userData);
 
     if (!userData) {
       return res.status(400).send({ error: `Wrong data` });
@@ -43,7 +43,7 @@ router.post("/register", async (req, res) => {
     console.log(err);
     return res
       .status(500)
-      .send({ err: `Unexpected error: Please try again` })
+      .send({ error: `Unexpected error: Please try again` })
       .end();
   }
 });
@@ -52,7 +52,7 @@ router.post("/login", async (req, res) => {
   let userData = req.body;
 
   try {
-    userData = userSchema.validate(userData);
+    userData = await userSchema.validateAsync(userData);
   } catch (error) {
     console.error(error);
     return res.status(400).send({ error: "Incorrect data send" }).end();
@@ -62,9 +62,7 @@ router.post("/login", async (req, res) => {
     const con = await mysql.createConnection(MYSQL_CONFIG);
 
     const [data] = await con.execute(
-      `SELECT * FROM users WHERE email = ${mysql.escape(
-        userData.email
-      )}, password = ${mysql.escape(userData.password)}`
+      `SELECT * FROM users WHERE email = ${mysql.escape(userData.email)}`
     );
 
     await con.end();
